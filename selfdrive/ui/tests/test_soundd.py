@@ -5,7 +5,7 @@ import unittest
 
 from cereal import log, car
 import cereal.messaging as messaging
-from openpilot.selfdrive.test.helpers import phone_only, with_processes
+from openpilot.selfdrive.test.helpers import with_processes
 # TODO: rewrite for unittest
 from openpilot.common.realtime import DT_CTRL
 from openpilot.system.hardware import HARDWARE
@@ -34,7 +34,6 @@ class TestSoundd(unittest.TestCase):
   def test_sound_card_init(self):
     assert HARDWARE.get_sound_card_online()
 
-  @phone_only
   @with_processes(['soundd'])
   def test_alert_sounds(self):
     pm = messaging.PubMaster(['deviceState', 'controlsState'])
